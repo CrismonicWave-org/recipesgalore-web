@@ -1,23 +1,211 @@
-.page-container {
-  max-width: 800px;
+.about-container {
+  max-width: 1000px;
   margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero-section {
+  text-align: center;
   padding: 3rem 2rem;
-  background: white;
+  background: linear-gradient(135deg, rgba(225,112,85,0.1) 0%, rgba(0,184,148,0.1) 100%);
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 4rem;
 }
 
-.page-container h1 {
+.hero-section h1 {
   color: #2d3436;
-  margin-bottom: 1.5rem;
-  font-size: 2.5rem;
-  border-bottom: 3px solid #fab1a0;
-  padding-bottom: 1rem;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
-.page-container p {
+.intro {
+  font-size: 1.3rem;
   color: #636e72;
   line-height: 1.8;
-  margin-bottom: 1.2rem;
-  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
 }
+
+.vision-section {
+  margin-bottom: 4rem;
+}
+
+.vision-section h2 {
+  color: #2d3436;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid #fab1a0;
+  padding-bottom: 0.5rem;
+}
+
+.vision-section > p {
+  color: #636e72;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.tech-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+
+.tech-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.tech-item h3 {
+  color: #2d3436;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.tech-item p {
+  color: #636e72;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.vision-statement {
+  background: linear-gradient(135deg, rgba(255,234,167,0.4) 0%, rgba(253,203,110,0.4) 100%);
+  border-left: 5px solid #e17055;
+  color: #2d3436;
+  padding: 2rem;
+  border-radius: 12px;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-top: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.team-section {
+  margin-bottom: 4rem;
+}
+
+.team-section h2 {
+  color: #2d3436;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  border-bottom: 3px solid #fab1a0;
+  padding-bottom: 0.5rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.team-member {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.member-photo {
+  margin-bottom: 1.5rem;
+}
+
+.member-photo img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid #fab1a0;
+  object-fit: cover;
+}
+
+.team-member h3 {
+  color: #2d3436;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.role {
+  color: #e17055;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.bio {
+  color: #636e72;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.contribute-section {
+  background: linear-gradient(135deg, rgba(0,184,148,0.1) 0%, rgba(0,206,201,0.1) 100%);
+  padding: 3rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.contribute-section h2 {
+  color: #2d3436;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.contribute-section p {
+  color: #636e72;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.github-link {
+  display: inline-block;
+  background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(45,52,54,0.3);
+}
+
+.github-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(45,52,54,0.4);
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+  
+  .tech-highlights {
+    grid-template-columns: 1fr;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
