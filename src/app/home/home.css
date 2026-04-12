@@ -1,0 +1,119 @@
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 0 4rem;
+  border-bottom: 3px solid #fab1a0;
+  margin-bottom: 4rem;
+  background: linear-gradient(180deg, rgba(254,202,87,0.1) 0%, rgba(255,234,167,0.1) 100%);
+  border-radius: 0 0 24px 24px;
+}
+
+.banner {
+  margin-bottom: 2rem;
+}
+
+.banner img {
+  max-width: 800px;
+  max-height: 180px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  color: #2d3436;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.tagline {
+  font-size: 1.6rem;
+  color: #e17055;
+  margin: 0 0 1.5rem 0;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 1.15rem;
+  color: #636e72;
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(0,184,148,0.3);
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,184,148,0.4);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  padding: 2rem 0 4rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 2px solid transparent;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  border-color: #fab1a0;
+}
+
+.feature-card h3 {
+  color: #2d3436;
+  margin: 0 0 1rem 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.feature-card p {
+  color: #636e72;
+  margin: 0;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .tagline {
+    font-size: 1.3rem;
+  }
+  
+  .features {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
