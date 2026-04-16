@@ -1,0 +1,121 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      create_notes:
+        description: 'Additional release notes (optional)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for changelog
+          ref: main  # Always create release from main
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Get version from package.json
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          TAG_NAME="v$VERSION"
+          
+          echo "📦 Version: $VERSION"
+          echo "🏷️  Tag: $TAG_NAME"
+          
+          # Check if tag already exists
+          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            echo "❌ Error: Tag $TAG_NAME already exists!"
+            echo "This version has already been released."
+            exit 1
+          fi
+          
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+      
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Get the last tag, or use initial commit if no tags exist
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || git rev-list --max-parents=0 HEAD)
+          echo "📝 Generating changelog since: $LAST_TAG"
+          
+          # Generate commit list
+          COMMITS=$(git log $LAST_TAG..HEAD --pretty=format:"- %s (%h)" --no-merges)
+          
+          # Create changelog file
+          cat > changelog.txt << 'CHANGELOG_EOF'
+          ## What's Changed
+          
+          COMMITS_PLACEHOLDER
+          
+          NOTES_PLACEHOLDER
+          
+          **Full Changelog**: https://github.com/${{ github.repository }}/compare/LAST_TAG_PLACEHOLDER...${{ steps.version.outputs.tag_name }}
+          CHANGELOG_EOF
+          
+          # Replace placeholders
+          if [ -n "$COMMITS" ]; then
+            sed -i "s|COMMITS_PLACEHOLDER|$COMMITS|g" changelog.txt
+          else
+            sed -i "s|COMMITS_PLACEHOLDER|No new commits since last release|g" changelog.txt
+          fi
+          
+          # Add custom notes if provided
+          if [ -n "${{ github.event.inputs.create_notes }}" ]; then
+            NOTES="## Release Notes
+
+          ${{ github.event.inputs.create_notes }}"
+            sed -i "s|NOTES_PLACEHOLDER|$NOTES|g" changelog.txt
+          else
+            sed -i "s|NOTES_PLACEHOLDER||g" changelog.txt
+          fi
+          
+          sed -i "s|LAST_TAG_PLACEHOLDER|$LAST_TAG|g" changelog.txt
+          
+          echo "📄 Generated changelog:"
+          cat changelog.txt
+      
+      - name: Create and push tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git tag -a ${{ steps.version.outputs.tag_name }} -m "Release ${{ steps.version.outputs.tag_name }}"
+          git push origin ${{ steps.version.outputs.tag_name }}
+          
+          echo "✅ Created and pushed tag ${{ steps.version.outputs.tag_name }}"
+      
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create ${{ steps.version.outputs.tag_name }} \
+            --title "Release ${{ steps.version.outputs.tag_name }}" \
+            --notes-file changelog.txt
+          
+          echo "✅ Created GitHub Release ${{ steps.version.outputs.tag_name }}"
+      
+      - name: Summary
+        run: |
+          echo "🎉 Release published successfully!"
+          echo ""
+          echo "📦 Version: ${{ steps.version.outputs.version }}"
+          echo "🏷️  Tag: ${{ steps.version.outputs.tag_name }}"
+          echo "📝 Release: https://github.com/${{ github.repository }}/releases/tag/${{ steps.version.outputs.tag_name }}"
+          echo ""
+          echo "🌐 Live site: https://recipesgalore-web.web.app"
+          echo "👀 Footer should show: Version ${{ steps.version.outputs.version }}"

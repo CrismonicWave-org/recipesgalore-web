@@ -6,6 +6,7 @@
     <ul class="nav-menu">
       <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
       <li><a routerLink="/about" routerLinkActive="active">About Us</a></li>
+      <li><a routerLink="/contribute" routerLinkActive="active">Contribute</a></li>
       <li><a routerLink="/contact" routerLinkActive="active">Contact Us</a></li>
     </ul>
   </div>
@@ -17,7 +18,7 @@
 
 <footer class="footer">
   <div class="container">
-    <p>&copy; 2026 RecipesGalore. Open Source Project.</p>
+    <p>&copy; 2026 RecipesGalore. <a routerLink="/contribute" class="footer-link">Open Source Project</a>.</p>
     <p class="version">Version 0.1.0</p>
   </div>
 </footer>
