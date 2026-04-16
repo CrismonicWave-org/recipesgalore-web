@@ -26,6 +26,22 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       
+      - name: Prevent running on main branch
+        run: |
+          if [ "${{ github.ref_name }}" == "main" ]; then
+            echo "❌ ERROR: Cannot run version update on main branch!"
+            echo ""
+            echo "This workflow should only run on feature branches."
+            echo ""
+            echo "Please:"
+            echo "  1. Switch to your feature branch in the 'Run workflow' dropdown"
+            echo "  2. Re-run this workflow"
+            echo ""
+            echo "Why? Version bumps need to go through PR review process."
+            exit 1
+          fi
+          echo "✅ Running on branch: ${{ github.ref_name }}"
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
