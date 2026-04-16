@@ -1,0 +1,200 @@
+<div class="contribute-page">
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>🎉 Contributing to RecipesGalore</h1>
+      <p class="hero-text">
+        RecipesGalore is more than just a recipe app—it's a community-driven 
+        platform built with ❤️ by developers, food lovers, and open source 
+        enthusiasts. Whether you're a seasoned developer or making your first 
+        contribution, there's a place for you here!
+      </p>
+      <div class="values">
+        <div class="value-item">✨ Keep It Simple</div>
+        <div class="value-item">🛡️ Quality First</div>
+        <div class="value-item">🚀 Incremental MVP</div>
+        <div class="value-item">🤝 Open Source</div>
+      </div>
+    </section>
+
+    <!-- Architecture Diagram -->
+    <section class="architecture">
+      <h2>Project Architecture</h2>
+      <p class="section-intro">RecipesGalore is built with a multi-repository architecture. Each repo serves a specific purpose:</p>
+      
+      <div class="architecture-diagram">
+        <pre class="mermaid">
+graph LR
+    DR[📚 digital-recipes<br/>Community Recipes<br/>Markdown + YAML]
+    WEB[🌐 recipesgalore-web<br/>Angular SPA<br/>Firebase Hosting]
+    MOB[📱 recipesgalore-mobile<br/>Ionic App<br/>iOS & Android]
+    
+    DR -->|Releases as API| WEB
+    DR -->|Releases as API| MOB
+    
+    style DR fill:#fab1a0,stroke:#e17055,stroke-width:2px
+    style WEB fill:#fdcb6e,stroke:#e17055,stroke-width:2px
+    style MOB fill:#a29bfe,stroke:#6c5ce7,stroke-width:2px
+        </pre>
+      </div>
+    </section>
+
+    <!-- Repository Cards -->
+    <section class="repositories">
+      <h2>Choose Your Adventure</h2>
+      <p class="section-intro">Pick a repository that matches your interests and skills:</p>
+      
+      <div class="repo-cards">
+        
+        <!-- Digital Recipes Card -->
+        <div class="repo-card">
+          <div class="repo-icon">📚</div>
+          <h3>Digital Recipes</h3>
+          <p class="repo-description">
+            Community recipe contributions using simple Markdown and YAML files. 
+            Perfect for those who want to contribute recipes without coding!
+          </p>
+          
+          <div class="tech-stack">
+            <span class="tech-badge markdown">Markdown</span>
+            <span class="tech-badge yaml">YAML</span>
+            <span class="tech-badge git">Git</span>
+          </div>
+          
+          <div class="contribute-points">
+            <div class="point">📝 Add your favorite recipes</div>
+            <div class="point">🔍 Review and improve existing recipes</div>
+            <div class="point">🏷️ Organize with better categorization</div>
+          </div>
+          
+          <div class="repo-links">
+            <a href="https://github.com/CrismonicWave-org/digital-recipes/blob/main/README.md" target="_blank" class="link-button secondary">
+              View README
+            </a>
+            <a href="https://github.com/CrismonicWave-org/digital-recipes" target="_blank" class="link-button primary">
+              Go to Repository →
+            </a>
+          </div>
+        </div>
+
+        <!-- RecipesGalore Web Card -->
+        <div class="repo-card featured">
+          <div class="repo-icon">🌐</div>
+          <h3>RecipesGalore Web</h3>
+          <p class="repo-description">
+            Angular SPA for browsing and discovering recipes. Deployed on Firebase 
+            with automated CI/CD. You're looking at it right now!
+          </p>
+          
+          <div class="tech-stack">
+            <span class="tech-badge angular">Angular</span>
+            <span class="tech-badge typescript">TypeScript</span>
+            <span class="tech-badge firebase">Firebase</span>
+            <span class="tech-badge css">CSS</span>
+          </div>
+          
+          <div class="contribute-points">
+            <div class="point">🎨 Improve UI/UX design</div>
+            <div class="point">⚡ Add new features</div>
+            <div class="point">🐛 Fix bugs and improve performance</div>
+          </div>
+          
+          <div class="repo-links">
+            <a href="https://github.com/CrismonicWave-org/recipesgalore-web/blob/main/README.md" target="_blank" class="link-button secondary">
+              View README
+            </a>
+            <a href="https://github.com/CrismonicWave-org/recipesgalore-web/blob/main/CONTRIBUTING.md" target="_blank" class="link-button secondary">
+              Contributing Guide
+            </a>
+            <a href="https://github.com/CrismonicWave-org/recipesgalore-web" target="_blank" class="link-button primary">
+              Go to Repository →
+            </a>
+          </div>
+        </div>
+
+        <!-- RecipesGalore Mobile Card -->
+        <div class="repo-card coming-soon">
+          <div class="repo-icon">📱</div>
+          <h3>RecipesGalore Mobile</h3>
+          <p class="repo-description">
+            Ionic/Capacitor mobile app for iOS and Android. The primary user 
+            experience for browsing recipes on the go.
+          </p>
+          
+          <div class="tech-stack">
+            <span class="tech-badge ionic">Ionic</span>
+            <span class="tech-badge capacitor">Capacitor</span>
+            <span class="tech-badge angular">Angular</span>
+          </div>
+          
+          <div class="contribute-points">
+            <div class="point">📱 Mobile-first user experience</div>
+            <div class="point">🍎 iOS app development</div>
+            <div class="point">🤖 Android app development</div>
+          </div>
+          
+          <div class="repo-links">
+            <div class="coming-soon-badge">🚧 Coming Soon!</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Getting Started -->
+    <section class="getting-started">
+      <h2>🚀 How to Get Started</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Pick a Repository</h4>
+            <p>Choose one of the repositories above that interests you</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Read the Docs</h4>
+            <p>Check out the README and CONTRIBUTING guide</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Set Up Locally</h4>
+            <p>Fork the repo and follow the setup instructions</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Find an Issue</h4>
+            <p>Look for "good first issue" labels to get started</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4>Make Your PR</h4>
+            <p>Submit your contribution and join the community!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2>Ready to Contribute?</h2>
+      <p>
+        Pick a repository above and let's cook something great together! 👨‍🍳👩‍🍳
+      </p>
+      <p class="questions">
+        Have questions? <a href="https://github.com/CrismonicWave-org/recipesgalore-web/discussions" target="_blank">Start a discussion</a> 
+        or <a routerLink="/contact">reach out to us</a>!
+      </p>
+    </section>
+
+  </div>
+</div>
